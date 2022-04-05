@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
+import DisplayRankingButton from '../components/DisplayRankingButton';
+import PlayerFinalScore from '../components/PlayerFinalScore';
+import ResultsMessage from '../components/ResultsMessage';
 
 class Results extends Component {
   render() {
     return (
-      <div>Results</div>
+      <main>
+        <ResultsMessage />
+        <PlayerFinalScore />
+        <DisplayRankingButton />
+      </main>
     );
   }
 }

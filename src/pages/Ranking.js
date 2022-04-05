@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
+import IndividualRanking from '../components/IndividualRanking';
 
 class Ranking extends Component {
   render() {
     return (
-      <div>Ranking</div>
+      <main>
+        <ol>
+          <IndividualRanking />
+        </ol>
+      </main>
     );
   }
 }
