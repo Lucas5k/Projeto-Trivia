@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { actionGetToken, actionUpdatePlayerData } from '../redux/actions';
 import './LoginForm.css';
 
 class LoginForm extends Component {
@@ -7,8 +9,8 @@ class LoginForm extends Component {
     super();
 
     this.state = {
-      playerName: '',
-      email: '',
+      name: '',
+      gravatarEmail: '',
     };
   }
 
@@ -16,17 +18,24 @@ class LoginForm extends Component {
     this.setState({ [target.name]: target.value });
   };
 
+  handleSubmit = () => {
+    const { requestToken, updatePlayerDate, history } = this.props;
+    requestToken();
+    updatePlayerDate(this.state);
+    history.push('/game');
+  }
+
   handleDisableButton = () => {
-    const { playerName, email } = this.state;
+    const { name, gravatarEmail } = this.state;
     const emailRegExp = /^([a-z0-9]{1,}[._]{0,1}[a-z0-9]{1,})*(@[a-z0-9]{1,}.com)$/i;
-    if (playerName.length === 0 || !email.match(emailRegExp)) {
+    if (name.length === 0 || !gravatarEmail.match(emailRegExp)) {
       return true;
     }
     return false;
   };
 
   render() {
-    const { playerName, email } = this.state;
+    const { name, gravatarEmail } = this.state;
 
     return (
       <form className="LoginForm">
@@ -34,9 +43,9 @@ class LoginForm extends Component {
           <input
             id="input-player-name"
             data-testid="input-player-name"
-            name="playerName"
+            name="name"
             type="text"
-            value={ playerName }
+            value={ name }
             onChange={ this.handleChange }
           />
         </label>
@@ -45,8 +54,8 @@ class LoginForm extends Component {
             id="input-gravatar-email"
             data-testid="input-gravatar-email"
             type="email"
-            name="email"
-            value={ email }
+            name="gravatarEmail"
+            value={ gravatarEmail }
             onChange={ this.handleChange }
           />
         </label>
@@ -54,6 +63,7 @@ class LoginForm extends Component {
           type="button"
           data-testid="btn-play"
           disabled={ this.handleDisableButton() }
+          onClick={ this.handleSubmit }
         >
           Play
         </button>
@@ -62,4 +72,17 @@ class LoginForm extends Component {
   }
 }
 
-export default connect()(LoginForm);
+const mapDispatchToProps = (dispatch) => ({
+  requestToken: () => dispatch(actionGetToken()),
+  updatePlayerDate: (state) => dispatch(actionUpdatePlayerData(state)),
+});
+
+LoginForm.propTypes = {
+  requestToken: PropTypes.func.isRequired,
+  updatePlayerDate: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
+};
+
+export default connect(null, mapDispatchToProps)(LoginForm);
