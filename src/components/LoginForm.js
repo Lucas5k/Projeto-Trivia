@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './LoginForm.css';
 
 class LoginForm extends Component {
@@ -61,4 +62,4 @@ class LoginForm extends Component {
   }
 }
 
-export default LoginForm;
+export default connect()(LoginForm);
