@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import LoginForm from '../components/LoginForm';
+import SettingsButton from '../components/SettingsButton';
 
 class Login extends Component {
   render() {
@@ -8,6 +9,7 @@ class Login extends Component {
 
     return (
       <main>
+        <SettingsButton history={ history } />
         <LoginForm history={ history } />
       </main>
     );
