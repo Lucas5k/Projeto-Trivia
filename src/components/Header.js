@@ -1,11 +1,17 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import PlayerScore from './PlayerScore';
 import SettingsButton from './SettingsButton';
 
 class Header extends Component {
   render() {
+    const { name, score, avatar } = this.props;
     return (
       <header>
+        <img src={ avatar } data-testid="header-profile-picture" alt="avatar" />
+        <h2 data-testid="header-player-name">{ name }</h2>
+        <span data-testid="header-score">{ score }</span>
         <PlayerScore />
         <SettingsButton />
       </header>
@@ -13,4 +19,16 @@ class Header extends Component {
   }
 }
 
-export default Header;
+Header.propTypes = {
+  name: PropTypes.string,
+  score: PropTypes.string,
+  avatar: PropTypes.string,
+}.isRequired;
+
+const mapStateToProps = (state) => ({
+  name: state.player.name,
+  score: state.player.score,
+  avatar: state.player.avatar,
+});
+
+export default connect(mapStateToProps, null)(Header);

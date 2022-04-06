@@ -1,10 +1,11 @@
-import { UPDATE_PLAYER_DATA } from '../actions';
+import { UPDATE_PLAYER_DATA, GET_AVATAR } from '../actions';
 
 const INITIAL_STATE = {
   name: '',
   assertions: 0,
   score: 0,
   gravatarEmail: '',
+  avatar: '',
 };
 
 const player = (state = INITIAL_STATE, action) => {
@@ -14,6 +15,11 @@ const player = (state = INITIAL_STATE, action) => {
       ...state,
       name: action.name,
       gravatarEmail: action.gravatarEmail,
+    };
+  case GET_AVATAR:
+    return {
+      ...state,
+      avatar: action.avatar,
     };
   default:
     return state;
