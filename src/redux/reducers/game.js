@@ -5,13 +5,16 @@ const INITIAL_STATE = {
   round: 0,
 };
 
-const player = (state = INITIAL_STATE, action) => {
+const game = (state = INITIAL_STATE, action) => {
   switch (action.type) {
   case GET_QUESTIONS:
-    return action.questions;
+    return {
+      ...state,
+      questions: action.questions,
+    };
   default:
     return state;
   }
 };
 
-export default player;
+export default game;

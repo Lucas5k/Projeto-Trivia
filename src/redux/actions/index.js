@@ -3,7 +3,6 @@ import { getAvatar, getQuestions, getToken } from '../../services';
 const GET_TOKEN = 'GET_TOKEN';
 const UPDATE_PLAYER_DATA = 'UPDATE_PLAYER_DATA';
 const GET_AVATAR = 'GET_AVATAR';
-
 const GET_QUESTIONS = 'GET_QUESTIONS';
 
 function actionGetToken() {
@@ -33,6 +32,7 @@ function actionGetQuestions(token) {
     });
   };
 }
+
 function actionGetAvatar(email) {
   return async (dispatch) => {
     const avatar = await getAvatar(email);
