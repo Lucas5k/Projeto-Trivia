@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { actionGetToken, actionUpdatePlayerData } from '../redux/actions';
+import { actionGetQuestion, actionGetToken,
+  actionUpdatePlayerData } from '../redux/actions';
 import './LoginForm.css';
 
 class LoginForm extends Component {
@@ -12,6 +13,12 @@ class LoginForm extends Component {
       name: '',
       gravatarEmail: '',
     };
+  }
+
+  componentDidMount() {
+    const { questionDispatch } = this.props;
+    questionDispatch();
+    console.log(questionDispatch());
   }
 
   handleChange = ({ target }) => {
@@ -74,12 +81,14 @@ class LoginForm extends Component {
 
 const mapDispatchToProps = (dispatch) => ({
   requestToken: () => dispatch(actionGetToken()),
+  questionDispatch: () => dispatch(actionGetQuestion()),
   updatePlayerDate: (state) => dispatch(actionUpdatePlayerData(state)),
 });
 
 LoginForm.propTypes = {
   requestToken: PropTypes.func.isRequired,
   updatePlayerDate: PropTypes.func.isRequired,
+  questionDispatch: PropTypes.func.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,
