@@ -3,7 +3,7 @@ import { getQuestions, getToken } from '../../services';
 const GET_TOKEN = 'GET_TOKEN';
 const UPDATE_PLAYER_DATA = 'UPDATE_PLAYER_DATA';
 
-const GET_QUESTION = 'GET_QUESTION';
+const GET_QUESTIONS = 'GET_QUESTIONS';
 
 function actionGetToken() {
   return async (dispatch) => {
@@ -23,15 +23,12 @@ function actionUpdatePlayerData({ name, gravatarEmail }) {
   };
 }
 
-function actionGetQuestion() {
+function actionGetQuestions(token) {
   return async (dispatch) => {
-    const token = await getToken();
-    console.log(token);
-    const question = await getQuestions(token);
-    console.log(question);
+    const questions = await getQuestions(token);
     dispatch({
-      type: GET_QUESTION,
-      question,
+      type: GET_QUESTIONS,
+      questions,
     });
   };
 }
@@ -41,6 +38,6 @@ export {
   GET_TOKEN,
   actionUpdatePlayerData,
   UPDATE_PLAYER_DATA,
-  GET_QUESTION,
-  actionGetQuestion,
+  GET_QUESTIONS,
+  actionGetQuestions,
 };

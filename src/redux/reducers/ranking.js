@@ -1,16 +1,9 @@
-import { GET_QUESTION } from '../actions';
-
-const INITIAL_STATE = {
-  results: [],
-};
+const INITIAL_STATE = [];
 
 const ranking = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-  case GET_QUESTION:
-    return {
-      ...state,
-      results: action.question,
-    };
+  case '':
+    return state;
   default:
     return state;
   }

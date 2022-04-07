@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { actionGetQuestion, actionGetToken,
-  actionUpdatePlayerData } from '../redux/actions';
+import { actionGetToken, actionUpdatePlayerData } from '../redux/actions';
 import './LoginForm.css';
 
 class LoginForm extends Component {
