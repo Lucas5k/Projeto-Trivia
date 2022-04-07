@@ -2,9 +2,9 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-  actionGetAvatar,
   actionGetToken,
   actionUpdatePlayerData,
+  actionGetQuestions,
 } from '../redux/actions';
 import './LoginForm.css';
 
@@ -18,22 +18,14 @@ class LoginForm extends Component {
     };
   }
 
-  componentDidMount() {
-    const { questionDispatch } = this.props;
-    questionDispatch();
-    console.log(questionDispatch());
-  }
-
   handleChange = ({ target }) => {
     this.setState({ [target.name]: target.value });
   };
 
   handleSubmit = () => {
-    const { gravatarEmail } = this.state;
-    const { requestToken, updatePlayerDate, history, requestAvatar } = this.props;
+    const { requestToken, updatePlayerDate, history } = this.props;
     requestToken();
     updatePlayerDate(this.state);
-    requestAvatar(gravatarEmail);
     history.push('/game');
   }
 
@@ -87,17 +79,15 @@ class LoginForm extends Component {
 const mapDispatchToProps = (dispatch) => ({
   requestToken: () => dispatch(actionGetToken()),
   updatePlayerDate: (state) => dispatch(actionUpdatePlayerData(state)),
-  requestAvatar: (email) => dispatch(actionGetAvatar(email)),
+  requestQuestions: (token) => dispatch(actionGetQuestions(token)),
 });
 
 LoginForm.propTypes = {
   requestToken: PropTypes.func.isRequired,
   updatePlayerDate: PropTypes.func.isRequired,
-  questionDispatch: PropTypes.func.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,
-  requestAvatar: PropTypes.func.isRequired,
 };
 
 export default connect(null, mapDispatchToProps)(LoginForm);

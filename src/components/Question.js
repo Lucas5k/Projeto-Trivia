@@ -9,29 +9,33 @@ class Question extends Component {
     const shuffle = 0.5;
 
     return (
-      <section>
-        <h1 data-testid="question-category">{currQuestion.category}</h1>
-        <h4 data-testid="question-text">{currQuestion.question}</h4>
-        <ul>
-          {[currQuestion.correct_answer, ...currQuestion.incorrect_answers]
-            .sort(() => Math.random() - shuffle)
-            .map((option, index) => (
-              <li key={ index }>
-                <button
-                  data-testid={
-                    option !== currQuestion.correct_answer
-                      ? `wrong-answer-${index}`
-                      : 'correct - answer'
-                  }
-                  type="button"
-                >
-                  {option}
-                </button>
-              </li>
-            ))}
-        </ul>
-        <QuestionTimer />
-      </section>
+      <>
+        { !currQuestion && <p>Loading...</p> }
+        { currQuestion && (
+          <section>
+            <h1 data-testid="question-category">{currQuestion.category}</h1>
+            <h4 data-testid="question-text">{currQuestion.question}</h4>
+            <ul data-testid="answer-options">
+              {[currQuestion.correct_answer, ...currQuestion.incorrect_answers]
+                .sort(() => Math.random() - shuffle)
+                .map((option, index) => (
+                  <button
+                    key={ index }
+                    data-testid={
+                      option !== currQuestion.correct_answer
+                        ? `wrong-answer-${index}`
+                        : 'correct-answer'
+                    }
+                    type="button"
+                  >
+                    {option}
+                  </button>
+                ))}
+            </ul>
+            <QuestionTimer />
+          </section>
+        ) }
+      </>
     );
   }
 }

@@ -5,6 +5,16 @@ const UPDATE_PLAYER_DATA = 'UPDATE_PLAYER_DATA';
 const GET_AVATAR = 'GET_AVATAR';
 const GET_QUESTIONS = 'GET_QUESTIONS';
 
+function actionGetQuestions(token) {
+  return async (dispatch) => {
+    const questions = await getQuestions(token);
+    dispatch({
+      type: GET_QUESTIONS,
+      questions,
+    });
+  };
+}
+
 function actionGetToken() {
   return async (dispatch) => {
     const token = await getToken();
@@ -12,6 +22,7 @@ function actionGetToken() {
       type: GET_TOKEN,
       token,
     });
+    dispatch(actionGetQuestions(token));
   };
 }
 
@@ -20,16 +31,6 @@ function actionUpdatePlayerData({ name, gravatarEmail }) {
     type: UPDATE_PLAYER_DATA,
     name,
     gravatarEmail,
-  };
-}
-
-function actionGetQuestions(token) {
-  return async (dispatch) => {
-    const questions = await getQuestions(token);
-    dispatch({
-      type: GET_QUESTIONS,
-      questions,
-    });
   };
 }
 
