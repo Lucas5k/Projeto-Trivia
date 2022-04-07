@@ -1,7 +1,11 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { actionGetToken, actionUpdatePlayerData } from '../redux/actions';
+import {
+  actionGetToken,
+  actionUpdatePlayerData,
+  actionGetQuestions,
+} from '../redux/actions';
 import './LoginForm.css';
 
 class LoginForm extends Component {
@@ -75,6 +79,7 @@ class LoginForm extends Component {
 const mapDispatchToProps = (dispatch) => ({
   requestToken: () => dispatch(actionGetToken()),
   updatePlayerDate: (state) => dispatch(actionUpdatePlayerData(state)),
+  requestQuestions: (token) => dispatch(actionGetQuestions(token)),
 });
 
 LoginForm.propTypes = {

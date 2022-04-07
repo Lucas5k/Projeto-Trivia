@@ -1,7 +1,19 @@
-import { getToken } from '../../services';
+import { getAvatar, getQuestions, getToken } from '../../services';
 
 const GET_TOKEN = 'GET_TOKEN';
 const UPDATE_PLAYER_DATA = 'UPDATE_PLAYER_DATA';
+const GET_AVATAR = 'GET_AVATAR';
+const GET_QUESTIONS = 'GET_QUESTIONS';
+
+function actionGetQuestions(token) {
+  return async (dispatch) => {
+    const questions = await getQuestions(token);
+    dispatch({
+      type: GET_QUESTIONS,
+      questions,
+    });
+  };
+}
 
 function actionGetToken() {
   return async (dispatch) => {
@@ -10,6 +22,7 @@ function actionGetToken() {
       type: GET_TOKEN,
       token,
     });
+    dispatch(actionGetQuestions(token));
   };
 }
 
@@ -21,9 +34,23 @@ function actionUpdatePlayerData({ name, gravatarEmail }) {
   };
 }
 
+function actionGetAvatar(email) {
+  return async (dispatch) => {
+    const avatar = await getAvatar(email);
+    dispatch({
+      type: GET_AVATAR,
+      avatar,
+    });
+  };
+}
+
 export {
   actionGetToken,
   GET_TOKEN,
   actionUpdatePlayerData,
   UPDATE_PLAYER_DATA,
+  GET_QUESTIONS,
+  actionGetQuestions,
+  actionGetAvatar,
+  GET_AVATAR,
 };
