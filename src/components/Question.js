@@ -14,7 +14,7 @@ class Question extends Component {
   };
 
   render() {
-    const { currQuestion, pickQuestion } = this.props;
+    const { timerFinished, currQuestion, pickQuestion } = this.props;
     const shuffle = 0.5;
 
     return (
@@ -41,6 +41,7 @@ class Question extends Component {
                     }
                     type="button"
                     onClick={ pickQuestion }
+                    disabled={ timerFinished }
                   >
                     {option}
                   </button>
@@ -56,6 +57,7 @@ class Question extends Component {
 
 const mapStateToProps = (state) => ({
   questionChosen: state.game.questionChosen,
+  timerFinished: state.game.timerFinished,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -73,6 +75,7 @@ Question.propTypes = {
   }),
   pickQuestion: PropTypes.func.isRequired,
   questionChosen: PropTypes.bool.isRequired,
+  timerFinished: PropTypes.bool.isRequired,
 };
 
 Question.defaultProps = {
