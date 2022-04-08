@@ -1,3 +1,4 @@
+import md5 from 'crypto-js/md5';
 import { getAvatar, getQuestions, getToken } from '../../services';
 
 const GET_TOKEN = 'GET_TOKEN';
@@ -7,6 +8,8 @@ const GET_QUESTIONS = 'GET_QUESTIONS';
 const QUESTION_CHOSEN = 'QUESTION_CHOSEN';
 const NEXT_ROUND = 'NEXT_ROUND';
 const DECREASE_TIMER = 'DECREASE_TIMER';
+const FINAL_ROUND = 'FINAL_ROUND';
+const GET_RANKING = 'GET_RANKING';
 
 function actionGetQuestions(token) {
   return async (dispatch) => {
@@ -67,6 +70,21 @@ function actionNextRound() {
   };
 }
 
+function actionFinalRound({ name, score, gravatarEmail }) {
+  return {
+    type: FINAL_ROUND,
+    name,
+    score,
+    picture: `https://www.gravatar.com/avatar/${md5(gravatarEmail).toString()}`,
+  };
+}
+
+function actionGetRanking() {
+  return {
+    type: GET_RANKING,
+  };
+}
+
 export {
   actionGetToken,
   GET_TOKEN,
@@ -82,4 +100,8 @@ export {
   NEXT_ROUND,
   actionDecreaseTimer,
   DECREASE_TIMER,
+  FINAL_ROUND,
+  actionFinalRound,
+  GET_RANKING,
+  actionGetRanking,
 };
