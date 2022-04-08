@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { actionDecreaseTimer } from '../redux/actions';
+import { actionDecreaseTimer, actionQuestionChosen } from '../redux/actions';
 
 class QuestionTimer extends Component {
   componentDidMount() {
@@ -9,9 +9,12 @@ class QuestionTimer extends Component {
   }
 
   componentDidUpdate() {
-    const { timer } = this.props;
+    const { timer, questionChosen, pickQuestion } = this.props;
     const initialTimer = 30;
-    if (timer === 0) clearInterval(this.intervalID);
+    if (timer === 0 || questionChosen) {
+      clearInterval(this.intervalID);
+      pickQuestion();
+    }
     if (timer === initialTimer) this.startTimer();
   }
 
@@ -37,15 +40,19 @@ class QuestionTimer extends Component {
 
 const mapStateToProps = (state) => ({
   timer: state.game.timer,
+  questionChosen: state.game.questionChosen,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   decreaseTimer: () => dispatch(actionDecreaseTimer()),
+  pickQuestion: () => dispatch(actionQuestionChosen()),
 });
 
 QuestionTimer.propTypes = {
   timer: PropTypes.number.isRequired,
   decreaseTimer: PropTypes.func.isRequired,
+  pickQuestion: PropTypes.func.isRequired,
+  questionChosen: PropTypes.bool.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(QuestionTimer);

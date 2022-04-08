@@ -22,7 +22,6 @@ const game = (state = INITIAL_STATE, action) => {
       questionChosen: true,
     };
   case DECREASE_TIMER:
-    if (state.timer === 0) return state;
     return {
       ...state,
       timer: state.timer - 1,
@@ -32,6 +31,7 @@ const game = (state = INITIAL_STATE, action) => {
     return {
       ...state,
       round: state.round + 1,
+      questionChosen: false,
       timer: 30,
     };
   default:

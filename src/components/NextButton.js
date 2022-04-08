@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { actionNextRound } from '../redux/actions';
 
@@ -8,7 +8,7 @@ class NextButton extends Component {
     const { goToNextRound } = this.props;
 
     return (
-      <button type="button" onClick={ goToNextRound }>
+      <button data-testid="btn-next" type="button" onClick={ goToNextRound }>
         NextButton
       </button>
     );
