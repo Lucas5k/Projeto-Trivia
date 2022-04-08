@@ -12,8 +12,17 @@ class Question extends Component {
     if (correctAnswer !== currAnswer) return 'Question-wrong';
   };
 
+  handlePickQuestion = (option, rightAnswer, difficulty, timer) => {
+    const { pickQuestion } = this.props;
+    const multipliers = { hard: 3, medium: 2, easy: 1 };
+    const isRight = option === rightAnswer;
+    const minPoints = 10;
+    const score = isRight ? minPoints + (multipliers[difficulty] * timer) : 0;
+    pickQuestion(score);
+  };
+
   render() {
-    const { timer, currQuestion, answers, pickQuestion, questionChosen } = this.props;
+    const { timer, currQuestion, answers, questionChosen } = this.props;
 
     return (
       <>
@@ -23,26 +32,30 @@ class Question extends Component {
             <h1 data-testid="question-category">{currQuestion.category}</h1>
             <h4 data-testid="question-text">{currQuestion.question}</h4>
             <ul data-testid="answer-options">
-              {answers
-                .map((option, index) => (
-                  <button
-                    key={ option }
-                    className={ this.handleHighlightQuestions(
-                      currQuestion.correct_answer,
-                      option,
-                    ) }
-                    data-testid={
-                      option !== currQuestion.correct_answer
-                        ? `wrong-answer-${index}`
-                        : 'correct-answer'
-                    }
-                    type="button"
-                    onClick={ pickQuestion }
-                    disabled={ timer === 0 || questionChosen }
-                  >
-                    {option}
-                  </button>
-                ))}
+              {answers.map((option, index) => (
+                <button
+                  key={ option }
+                  className={ this.handleHighlightQuestions(
+                    currQuestion.correct_answer,
+                    option,
+                  ) }
+                  data-testid={
+                    option !== currQuestion.correct_answer
+                      ? `wrong-answer-${index}`
+                      : 'correct-answer'
+                  }
+                  type="button"
+                  onClick={ () => this.handlePickQuestion(
+                    option,
+                    currQuestion.correct_answer,
+                    currQuestion.difficulty,
+                    timer,
+                  ) }
+                  disabled={ timer === 0 || questionChosen }
+                >
+                  {option}
+                </button>
+              ))}
             </ul>
           </section>
         )}
@@ -57,7 +70,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  pickQuestion: () => dispatch(actionQuestionChosen()),
+  pickQuestion: (score) => dispatch(actionQuestionChosen(score)),
 });
 
 Question.propTypes = {
