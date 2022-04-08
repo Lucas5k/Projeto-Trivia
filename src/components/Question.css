@@ -1,0 +1,11 @@
+.Question {
+  border: 1px solid black;
+}
+
+.Question-wrong {
+  border: 3px solid red;
+}
+
+.Question-right {
+  border: 3px solid rgb(6, 240, 15);
+}

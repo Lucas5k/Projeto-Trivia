@@ -1,47 +1,76 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import QuestionTimer from './QuestionTimer';
+import { actionQuestionChosen } from '../redux/actions';
+import './Question.css';
 
 class Question extends Component {
+  handleHighlightQuestions = (correctAnswer, currAnswer) => {
+    const { questionChosen } = this.props;
+    if (!questionChosen) return '';
+    if (correctAnswer === currAnswer) return 'Question-right';
+    if (correctAnswer !== currAnswer) return 'Question-wrong';
+  };
+
+  handlePickQuestion = (option, rightAnswer, difficulty, timer) => {
+    const { pickQuestion } = this.props;
+    const multipliers = { hard: 3, medium: 2, easy: 1 };
+    const isRight = option === rightAnswer;
+    const minPoints = 10;
+    const score = isRight ? minPoints + (multipliers[difficulty] * timer) : 0;
+    pickQuestion(score);
+  };
+
   render() {
-    const { currQuestion } = this.props;
-    const shuffle = 0.5;
+    const { timer, currQuestion, answers, questionChosen } = this.props;
 
     return (
       <>
-        { !currQuestion && <p>Loading...</p> }
-        { currQuestion && (
-          <section>
+        {!currQuestion && <p>Loading...</p>}
+        {currQuestion && (
+          <section className="Question">
             <h1 data-testid="question-category">{currQuestion.category}</h1>
             <h4 data-testid="question-text">{currQuestion.question}</h4>
             <ul data-testid="answer-options">
-              {[currQuestion.correct_answer, ...currQuestion.incorrect_answers]
-                .sort(() => Math.random() - shuffle)
-                .map((option, index) => (
-                  <button
-                    key={ index }
-                    data-testid={
-                      option !== currQuestion.correct_answer
-                        ? `wrong-answer-${index}`
-                        : 'correct-answer'
-                    }
-                    type="button"
-                  >
-                    {option}
-                  </button>
-                ))}
+              {answers.map((option, index) => (
+                <button
+                  key={ option }
+                  className={ this.handleHighlightQuestions(
+                    currQuestion.correct_answer,
+                    option,
+                  ) }
+                  data-testid={
+                    option !== currQuestion.correct_answer
+                      ? `wrong-answer-${index}`
+                      : 'correct-answer'
+                  }
+                  type="button"
+                  onClick={ () => this.handlePickQuestion(
+                    option,
+                    currQuestion.correct_answer,
+                    currQuestion.difficulty,
+                    timer,
+                  ) }
+                  disabled={ timer === 0 || questionChosen }
+                >
+                  {option}
+                </button>
+              ))}
             </ul>
-            <QuestionTimer />
           </section>
-        ) }
+        )}
       </>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
-  questionMap: state.ranking.results,
+  questionChosen: state.game.questionChosen,
+  timer: state.game.timer,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  pickQuestion: (score) => dispatch(actionQuestionChosen(score)),
 });
 
 Question.propTypes = {
@@ -52,7 +81,16 @@ Question.propTypes = {
     question: PropTypes.string.isRequired,
     correct_answer: PropTypes.string.isRequired,
     incorrect_answers: PropTypes.arrayOf(PropTypes.string.isRequired),
-  }).isRequired,
+  }),
+  answers: PropTypes.arrayOf(PropTypes.string),
+  pickQuestion: PropTypes.func.isRequired,
+  questionChosen: PropTypes.bool.isRequired,
+  timer: PropTypes.number.isRequired,
 };
 
-export default connect(mapStateToProps)(Question);
+Question.defaultProps = {
+  currQuestion: undefined,
+  answers: undefined,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Question);
