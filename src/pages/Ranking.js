@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import IndividualRanking from '../components/IndividualRanking';
 import { actionGetRanking } from '../redux/actions';
@@ -15,17 +15,15 @@ class Ranking extends Component {
     return (
       <main>
         <ol>
-          {
-            ranking
-              .sort((prev, curr) => curr.score - prev.score)
-              .map((record, index) => (
-                <IndividualRanking
-                  key={ index }
-                  index={ index }
-                  { ...record }
-                />
-              ))
-          }
+          {ranking
+            .sort((prev, curr) => curr.score - prev.score)
+            .map((record, index) => (
+              <IndividualRanking
+                key={ index }
+                index={ index }
+                { ...record }
+              />
+            ))}
         </ol>
       </main>
     );
