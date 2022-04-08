@@ -17,7 +17,7 @@ class Game extends Component {
   };
 
   render() {
-    const { questions, currRound, questionChosen } = this.props;
+    const { questions, currRound, history } = this.props;
 
     return (
       <main>
@@ -26,7 +26,7 @@ class Game extends Component {
           currQuestion={ questions[currRound] }
           answers={ this.shuffleAnswers(questions[currRound]) }
         />
-        { questionChosen && <NextButton /> }
+        <NextButton history={ history } />
       </main>
     );
   }
@@ -35,13 +35,12 @@ class Game extends Component {
 const mapStateToProps = (state) => ({
   questions: state.game.questions,
   currRound: state.game.round,
-  questionChosen: state.game.questionChosen,
 });
 
 Game.propTypes = {
   questions: PropTypes.arrayOf(PropTypes.object).isRequired,
   currRound: PropTypes.number.isRequired,
-  questionChosen: PropTypes.bool.isRequired,
+  history: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 export default connect(mapStateToProps, null)(Game);

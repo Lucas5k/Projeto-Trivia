@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { actionQuestionChosen } from '../redux/actions';
-import QuestionTimer from './QuestionTimer';
 import './Question.css';
 
 class Question extends Component {
@@ -14,7 +13,7 @@ class Question extends Component {
   };
 
   render() {
-    const { timer, currQuestion, answers, pickQuestion } = this.props;
+    const { timer, currQuestion, answers, pickQuestion, questionChosen } = this.props;
 
     return (
       <>
@@ -39,13 +38,12 @@ class Question extends Component {
                     }
                     type="button"
                     onClick={ pickQuestion }
-                    disabled={ timer === 0 }
+                    disabled={ timer === 0 || questionChosen }
                   >
                     {option}
                   </button>
                 ))}
             </ul>
-            <QuestionTimer />
           </section>
         )}
       </>
