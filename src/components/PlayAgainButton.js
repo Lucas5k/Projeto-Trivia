@@ -1,29 +1,29 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-class DisplayRankingButton extends Component {
+class PlayAgainButton extends React.Component {
   handleClick = () => {
     const { history } = this.props;
-    history.push('/game/ranking');
+    history.push('/');
   };
 
   render() {
     return (
       <button
         type="button"
-        data-testid="btn-ranking"
+        data-testid="btn-play-again"
         onClick={ this.handleClick }
       >
-        Ranking
+        Play Again
       </button>
     );
   }
 }
 
-DisplayRankingButton.propTypes = {
+PlayAgainButton.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,
 };
 
-export default DisplayRankingButton;
+export default PlayAgainButton;

@@ -10,10 +10,16 @@ class Ranking extends Component {
     getRanking();
   }
 
+  handleClick = () => {
+    const { history } = this.props;
+    history.push('/');
+  };
+
   render() {
     const { ranking } = this.props;
     return (
       <main>
+        <h1 data-testid="ranking-title">Ranking</h1>
         <ol>
           {ranking
             .sort((prev, curr) => curr.score - prev.score)
@@ -25,6 +31,13 @@ class Ranking extends Component {
               />
             ))}
         </ol>
+        <button
+          type="button"
+          data-testid="btn-go-home"
+          onClick={ this.handleClick }
+        >
+          Go Home
+        </button>
       </main>
     );
   }
@@ -41,6 +54,9 @@ const mapDispatchToProps = (dispatch) => ({
 Ranking.propTypes = {
   getRanking: PropTypes.func,
   ranking: PropTypes.arrayOf(PropTypes.any),
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }),
 }.isRequired;
 
 export default connect(mapStateToProps, mapDispatchToProps)(Ranking);
