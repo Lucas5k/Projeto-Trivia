@@ -6,7 +6,7 @@ const GET_AVATAR = 'GET_AVATAR';
 const GET_QUESTIONS = 'GET_QUESTIONS';
 const QUESTION_CHOSEN = 'QUESTION_CHOSEN';
 const NEXT_ROUND = 'NEXT_ROUND';
-const FINISH_TIMER = 'FINISH_TIMER';
+const DECREASE_TIMER = 'DECREASE_TIMER';
 
 function actionGetQuestions(token) {
   return async (dispatch) => {
@@ -53,9 +53,9 @@ function actionQuestionChosen() {
   };
 }
 
-function actionFinishTimer() {
+function actionDecreaseTimer() {
   return {
-    type: FINISH_TIMER,
+    type: DECREASE_TIMER,
   };
 }
 
@@ -78,6 +78,6 @@ export {
   QUESTION_CHOSEN,
   actionNextRound,
   NEXT_ROUND,
-  actionFinishTimer,
-  FINISH_TIMER,
+  actionDecreaseTimer,
+  DECREASE_TIMER,
 };

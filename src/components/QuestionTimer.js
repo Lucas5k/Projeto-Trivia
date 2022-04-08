@@ -1,29 +1,16 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { actionFinishTimer } from '../redux/actions';
+import { actionDecreaseTimer } from '../redux/actions';
 
 class QuestionTimer extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      timer: 30,
-    };
-  }
-
   componentDidMount() {
     this.startTimer();
   }
 
   componentDidUpdate() {
-    const { timer } = this.state;
-    const { finishTimer } = this.props;
-
-    if (timer === 0) {
-      clearInterval(this.intervalID);
-      finishTimer();
-    }
+    const { timer } = this.props;
+    if (timer === 0) clearInterval(this.intervalID);
   }
 
   componentWillUnmount() {
@@ -31,28 +18,32 @@ class QuestionTimer extends Component {
   }
 
   startTimer = () => {
+    const { decreaseTimer } = this.props;
     const second = 1000;
 
-    this.intervalID = setInterval(
-      this.setState((state) => ({ timer: state.timer - 1 })),
-      second,
-    );
-  };
+    this.intervalID = setInterval(decreaseTimer, second);
+  }
 
   render() {
     const { timer } = this.props;
 
-    return <span>{timer}</span>;
+    return (
+      <span>{timer}</span>
+    );
   }
 }
 
+const mapStateToProps = (state) => ({
+  timer: state.game.timer,
+});
+
 const mapDispatchToProps = (dispatch) => ({
-  finishTimer: () => dispatch(actionFinishTimer()),
+  decreaseTimer: () => dispatch(actionDecreaseTimer()),
 });
 
 QuestionTimer.propTypes = {
   timer: PropTypes.number.isRequired,
-  finishTimer: PropTypes.func.isRequired,
+  decreaseTimer: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(QuestionTimer);

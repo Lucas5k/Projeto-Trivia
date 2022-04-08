@@ -1,10 +1,10 @@
-import { FINISH_TIMER, GET_QUESTIONS, NEXT_ROUND, QUESTION_CHOSEN } from '../actions';
+import { DECREASE_TIMER, GET_QUESTIONS, NEXT_ROUND, QUESTION_CHOSEN } from '../actions';
 
 const INITIAL_STATE = {
   questions: [],
   round: 0,
   questionChosen: false,
-  timerFinished: false,
+  timer: 30,
 };
 
 const game = (state = INITIAL_STATE, action) => {
@@ -19,10 +19,11 @@ const game = (state = INITIAL_STATE, action) => {
       ...state,
       questionChosen: true,
     };
-  case FINISH_TIMER:
+  case DECREASE_TIMER:
+    if (state.timer === 0) return state;
     return {
       ...state,
-      timerFinished: true,
+      timer: state.timer - 1,
     };
   case NEXT_ROUND:
     return {

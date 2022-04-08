@@ -14,8 +14,7 @@ class Question extends Component {
   };
 
   render() {
-    const { timerFinished, currQuestion, pickQuestion } = this.props;
-    const shuffle = 0.5;
+    const { timer, currQuestion, answers, pickQuestion } = this.props;
 
     return (
       <>
@@ -25,8 +24,7 @@ class Question extends Component {
             <h1 data-testid="question-category">{currQuestion.category}</h1>
             <h4 data-testid="question-text">{currQuestion.question}</h4>
             <ul data-testid="answer-options">
-              {[currQuestion.correct_answer, ...currQuestion.incorrect_answers]
-                .sort(() => Math.random() - shuffle)
+              {answers
                 .map((option, index) => (
                   <button
                     key={ option }
@@ -41,7 +39,7 @@ class Question extends Component {
                     }
                     type="button"
                     onClick={ pickQuestion }
-                    disabled={ timerFinished }
+                    disabled={ timer === 0 }
                   >
                     {option}
                   </button>
@@ -57,7 +55,7 @@ class Question extends Component {
 
 const mapStateToProps = (state) => ({
   questionChosen: state.game.questionChosen,
-  timerFinished: state.game.timerFinished,
+  timer: state.game.timer,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -73,13 +71,15 @@ Question.propTypes = {
     correct_answer: PropTypes.string.isRequired,
     incorrect_answers: PropTypes.arrayOf(PropTypes.string.isRequired),
   }),
+  answers: PropTypes.arrayOf(PropTypes.string),
   pickQuestion: PropTypes.func.isRequired,
   questionChosen: PropTypes.bool.isRequired,
-  timerFinished: PropTypes.bool.isRequired,
+  timer: PropTypes.number.isRequired,
 };
 
 Question.defaultProps = {
   currQuestion: undefined,
+  answers: undefined,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Question);
