@@ -4,6 +4,7 @@ const GET_TOKEN = 'GET_TOKEN';
 const UPDATE_PLAYER_DATA = 'UPDATE_PLAYER_DATA';
 const GET_AVATAR = 'GET_AVATAR';
 const GET_QUESTIONS = 'GET_QUESTIONS';
+const QUESTION_CHOSEN = 'QUESTION_CHOSEN';
 
 function actionGetQuestions(token) {
   return async (dispatch) => {
@@ -44,6 +45,12 @@ function actionGetAvatar(email) {
   };
 }
 
+function actionQuestionChosen() {
+  return {
+    type: QUESTION_CHOSEN,
+  };
+}
+
 export {
   actionGetToken,
   GET_TOKEN,
@@ -53,4 +60,6 @@ export {
   actionGetQuestions,
   actionGetAvatar,
   GET_AVATAR,
+  actionQuestionChosen,
+  QUESTION_CHOSEN,
 };
