@@ -7,6 +7,8 @@ const INITIAL_STATE = {
   timer: 30,
 };
 
+const finalRound = 4;
+
 const game = (state = INITIAL_STATE, action) => {
   switch (action.type) {
   case GET_QUESTIONS:
@@ -26,6 +28,7 @@ const game = (state = INITIAL_STATE, action) => {
       timer: state.timer - 1,
     };
   case NEXT_ROUND:
+    if (state.round === finalRound) return state;
     return {
       ...state,
       round: state.round + 1,

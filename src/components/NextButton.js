@@ -1,13 +1,26 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { actionNextRound } from '../redux/actions';
 
 class NextButton extends Component {
   render() {
+    const { goToNextRound } = this.props;
+
     return (
-      <button type="button">
+      <button type="button" onClick={ goToNextRound }>
         NextButton
       </button>
     );
   }
 }
 
-export default NextButton;
+const mapDispatchToProps = (dispatch) => ({
+  goToNextRound: () => dispatch(actionNextRound()),
+});
+
+NextButton.propTypes = {
+  goToNextRound: PropTypes.func.isRequired,
+};
+
+export default connect(null, mapDispatchToProps)(NextButton);

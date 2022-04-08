@@ -10,7 +10,9 @@ class QuestionTimer extends Component {
 
   componentDidUpdate() {
     const { timer } = this.props;
+    const initialTimer = 30;
     if (timer === 0) clearInterval(this.intervalID);
+    if (timer === initialTimer) this.startTimer();
   }
 
   componentWillUnmount() {
