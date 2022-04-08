@@ -5,6 +5,7 @@ const UPDATE_PLAYER_DATA = 'UPDATE_PLAYER_DATA';
 const GET_AVATAR = 'GET_AVATAR';
 const GET_QUESTIONS = 'GET_QUESTIONS';
 const QUESTION_CHOSEN = 'QUESTION_CHOSEN';
+const NEXT_ROUND = 'NEXT_ROUND';
 
 function actionGetQuestions(token) {
   return async (dispatch) => {
@@ -51,6 +52,12 @@ function actionQuestionChosen() {
   };
 }
 
+function actionNextRound() {
+  return {
+    type: NEXT_ROUND,
+  };
+}
+
 export {
   actionGetToken,
   GET_TOKEN,
@@ -62,4 +69,6 @@ export {
   GET_AVATAR,
   actionQuestionChosen,
   QUESTION_CHOSEN,
+  actionNextRound,
+  NEXT_ROUND,
 };

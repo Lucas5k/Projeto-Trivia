@@ -1,4 +1,4 @@
-import { GET_QUESTIONS, QUESTION_CHOSEN } from '../actions';
+import { GET_QUESTIONS, NEXT_ROUND, QUESTION_CHOSEN } from '../actions';
 
 const INITIAL_STATE = {
   questions: [],
@@ -17,6 +17,11 @@ const game = (state = INITIAL_STATE, action) => {
     return {
       ...state,
       questionChosen: true,
+    };
+  case NEXT_ROUND:
+    return {
+      ...state,
+      round: state.round + 1,
     };
   default:
     return state;
