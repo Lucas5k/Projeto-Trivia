@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import IndividualRanking from '../components/IndividualRanking';
-import { actionGetRanking } from '../redux/actions';
+import { actionGetRanking, actionResetGame } from '../redux/actions';
 
 class Ranking extends Component {
   componentDidMount() {
@@ -11,7 +11,8 @@ class Ranking extends Component {
   }
 
   handleClick = () => {
-    const { history } = this.props;
+    const { resetGame, history } = this.props;
+    resetGame();
     history.push('/');
   };
 
@@ -49,10 +50,12 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getRanking: () => dispatch(actionGetRanking()),
+  resetGame: () => dispatch(actionResetGame()),
 });
 
 Ranking.propTypes = {
   getRanking: PropTypes.func,
+  resetGame: PropTypes.func,
   ranking: PropTypes.arrayOf(PropTypes.any),
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,

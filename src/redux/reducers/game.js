@@ -1,4 +1,10 @@
-import { DECREASE_TIMER, GET_QUESTIONS, NEXT_ROUND, QUESTION_CHOSEN } from '../actions';
+import {
+  DECREASE_TIMER,
+  GET_QUESTIONS,
+  NEXT_ROUND,
+  QUESTION_CHOSEN,
+  RESET_GAME,
+} from '../actions';
 
 const INITIAL_STATE = {
   questions: [],
@@ -35,6 +41,8 @@ const game = (state = INITIAL_STATE, action) => {
       questionChosen: false,
       timer: 30,
     };
+  case RESET_GAME:
+    return INITIAL_STATE;
   default:
     return state;
   }
