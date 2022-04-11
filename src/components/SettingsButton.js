@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { IoSettingsSharp } from 'react-icons/io5';
 
 class SettingsButton extends Component {
   handleClick = () => {
@@ -14,7 +15,7 @@ class SettingsButton extends Component {
         data-testid="btn-settings"
         onClick={ this.handleClick }
       >
-        SettingsButton
+        <IoSettingsSharp />
       </button>
     );
   }

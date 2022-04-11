@@ -53,6 +53,7 @@ class LoginForm extends Component {
             data-testid="input-player-name"
             name="name"
             type="text"
+            placeholder="Enter your name"
             value={ name }
             onChange={ this.handleChange }
           />
@@ -61,8 +62,9 @@ class LoginForm extends Component {
           <input
             id="input-gravatar-email"
             data-testid="input-gravatar-email"
-            type="email"
             name="gravatarEmail"
+            type="email"
+            placeholder="Enter your email"
             value={ gravatarEmail }
             onChange={ this.handleChange }
           />
