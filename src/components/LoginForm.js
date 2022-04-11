@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import { MdEmail } from 'react-icons/md';
+import { RiGameFill, RiUser3Fill } from 'react-icons/ri';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import {
@@ -8,6 +10,7 @@ import {
   actionUpdatePlayerData,
 } from '../redux/actions';
 import './LoginForm.css';
+import SettingsButton from './SettingsButton';
 
 class LoginForm extends Component {
   constructor() {
@@ -42,11 +45,12 @@ class LoginForm extends Component {
   };
 
   render() {
-    const { name, gravatarEmail, redirect } = this.state;
+    const { name, gravatarEmail, redirect, history } = this.state;
 
     return (
       <form className="LoginForm">
         { redirect && <Redirect to="/game" /> }
+        <h1>Sign in to play</h1>
         <label htmlFor="input-player-name">
           <input
             id="input-player-name"
@@ -57,6 +61,9 @@ class LoginForm extends Component {
             value={ name }
             onChange={ this.handleChange }
           />
+          <span className="LoginForm-icon">
+            <RiUser3Fill />
+          </span>
         </label>
         <label htmlFor="input-gravatar-email">
           <input
@@ -68,6 +75,9 @@ class LoginForm extends Component {
             value={ gravatarEmail }
             onChange={ this.handleChange }
           />
+          <span className="LoginForm-icon">
+            <MdEmail />
+          </span>
         </label>
         <button
           type="button"
@@ -75,8 +85,10 @@ class LoginForm extends Component {
           disabled={ this.handleDisableButton() }
           onClick={ this.handleSubmit }
         >
-          Play
+          <RiGameFill />
+          <span>Play</span>
         </button>
+        <SettingsButton history={ history } />
       </form>
     );
   }

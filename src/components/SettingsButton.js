@@ -16,6 +16,7 @@ class SettingsButton extends Component {
         onClick={ this.handleClick }
       >
         <IoSettingsSharp />
+        <span>Settings</span>
       </button>
     );
   }
