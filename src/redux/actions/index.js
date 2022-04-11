@@ -1,9 +1,8 @@
 import md5 from 'crypto-js/md5';
-import { getAvatar, getQuestions, getToken } from '../../services';
+import { getQuestions, getToken } from '../../services';
 
 const GET_TOKEN = 'GET_TOKEN';
 const UPDATE_PLAYER_DATA = 'UPDATE_PLAYER_DATA';
-const GET_AVATAR = 'GET_AVATAR';
 const GET_QUESTIONS = 'GET_QUESTIONS';
 const QUESTION_CHOSEN = 'QUESTION_CHOSEN';
 const NEXT_ROUND = 'NEXT_ROUND';
@@ -38,16 +37,6 @@ function actionUpdatePlayerData({ name, gravatarEmail }) {
     type: UPDATE_PLAYER_DATA,
     name,
     gravatarEmail,
-  };
-}
-
-function actionGetAvatar(email) {
-  return async (dispatch) => {
-    const avatar = await getAvatar(email);
-    dispatch({
-      type: GET_AVATAR,
-      avatar,
-    });
   };
 }
 
@@ -99,8 +88,6 @@ export {
   UPDATE_PLAYER_DATA,
   GET_QUESTIONS,
   actionGetQuestions,
-  actionGetAvatar,
-  GET_AVATAR,
   actionQuestionChosen,
   QUESTION_CHOSEN,
   actionNextRound,

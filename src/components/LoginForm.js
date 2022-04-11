@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import {
+  actionGetQuestions,
   actionGetToken,
   actionUpdatePlayerData,
-  actionGetQuestions,
 } from '../redux/actions';
 import './LoginForm.css';
 
@@ -15,6 +16,7 @@ class LoginForm extends Component {
     this.state = {
       name: '',
       gravatarEmail: '',
+      redirect: false,
     };
   }
 
@@ -23,10 +25,11 @@ class LoginForm extends Component {
   };
 
   handleSubmit = () => {
-    const { requestToken, updatePlayerDate, history } = this.props;
+    const { requestToken, updatePlayerDate } = this.props;
+    const { name, gravatarEmail } = this.state;
     requestToken();
-    updatePlayerDate(this.state);
-    history.push('/game');
+    updatePlayerDate({ name, gravatarEmail });
+    this.setState({ redirect: true });
   }
 
   handleDisableButton = () => {
@@ -39,10 +42,11 @@ class LoginForm extends Component {
   };
 
   render() {
-    const { name, gravatarEmail } = this.state;
+    const { name, gravatarEmail, redirect } = this.state;
 
     return (
       <form className="LoginForm">
+        { redirect && <Redirect to="/game" /> }
         <label htmlFor="input-player-name">
           <input
             id="input-player-name"

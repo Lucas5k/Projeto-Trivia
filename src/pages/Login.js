@@ -10,7 +10,7 @@ class Login extends Component {
     return (
       <main>
         <SettingsButton history={ history } />
-        <LoginForm history={ history } />
+        <LoginForm />
       </main>
     );
   }
