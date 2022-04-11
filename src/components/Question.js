@@ -31,7 +31,7 @@ class Question extends Component {
         {currQuestion && (
           <section className="Question">
             <h1 data-testid="question-category">{currQuestion.category}</h1>
-            <h4 data-testid="question-text">{decode(currQuestion.question)}</h4>
+            <p data-testid="question-text">{decode(currQuestion.question)}</p>
             <ul data-testid="answer-options">
               {answers.map((option, index) => (
                 <button

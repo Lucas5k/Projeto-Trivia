@@ -46,7 +46,8 @@ class LoginForm extends Component {
   };
 
   render() {
-    const { name, gravatarEmail, redirect, history } = this.state;
+    const { name, gravatarEmail, redirect } = this.state;
+    const { history } = this.props;
 
     return (
       <form className="LoginForm">

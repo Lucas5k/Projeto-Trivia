@@ -13,7 +13,7 @@ class QuestionTimer extends Component {
     const initialTimer = 30;
     if (timer === 0 || questionChosen) {
       clearInterval(this.intervalID);
-      pickQuestion();
+      pickQuestion(0);
     }
     if (timer === initialTimer) this.startTimer();
   }
@@ -45,7 +45,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   decreaseTimer: () => dispatch(actionDecreaseTimer()),
-  pickQuestion: () => dispatch(actionQuestionChosen()),
+  pickQuestion: (score) => dispatch(actionQuestionChosen(score)),
 });
 
 QuestionTimer.propTypes = {

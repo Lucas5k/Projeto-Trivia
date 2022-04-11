@@ -1,5 +1,48 @@
 .Question {
-  border: 1px solid black;
+  background-color: var(--primary-color);
+  border: 3px solid var(--text-icons);
+  border-radius: var(--container-radius);
+  display: flex;
+  flex-flow: column nowrap;
+  margin-left: 4rem;
+  padding: 2.5rem;
+  width: 700px;
+}
+
+.Question h1 {
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+}
+
+.Question p {
+  margin-bottom: 1rem;
+}
+
+.Question ul {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.Question button {
+  align-items: center;
+  background-color: var(--accent-color);
+  border: 1px solid var(--text-icons);
+  border-radius: var(--input-buttons-radius);
+  color: var(--text-icons);
+  cursor: pointer;
+  display: flex;
+  font-size: 1rem;
+  margin-top: 1rem;
+  padding: 0.8rem 1.2rem;
+  width: 100%;
+}
+
+.Question button:disabled {
+  opacity: 0.5;
+}
+
+.Question button:hover:not( :disabled ) {
+  filter: brightness(120%);
 }
 
 .Question-wrong {
