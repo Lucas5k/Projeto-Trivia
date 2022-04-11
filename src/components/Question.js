@@ -1,3 +1,4 @@
+import { decode } from 'he';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
@@ -30,7 +31,7 @@ class Question extends Component {
         {currQuestion && (
           <section className="Question">
             <h1 data-testid="question-category">{currQuestion.category}</h1>
-            <h4 data-testid="question-text">{currQuestion.question}</h4>
+            <h4 data-testid="question-text">{decode(currQuestion.question)}</h4>
             <ul data-testid="answer-options">
               {answers.map((option, index) => (
                 <button
@@ -53,7 +54,7 @@ class Question extends Component {
                   ) }
                   disabled={ timer === 0 || questionChosen }
                 >
-                  {option}
+                  {decode(option)}
                 </button>
               ))}
             </ul>
