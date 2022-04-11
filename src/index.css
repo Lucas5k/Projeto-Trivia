@@ -1,3 +1,17 @@
+:root {
+  --primary-color: white;
+  --text-icons: #131313;
+  --secondary-color-purple: #3D24AA;
+  --secondary-color-pink: #EF1290;
+  --accent-color: #EFC82C;
+  --gradient-one: linear-gradient(to right top, #3d24aa, #6f1ca9, #9411a6, #b303a1, #cf009b, #d93aa9, #e358b6, #ec71c4, #e79be0, #e6c0f3, #ede1fd, #fff);
+}
+
+#root {
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

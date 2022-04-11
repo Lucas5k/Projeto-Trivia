@@ -1,0 +1,8 @@
+.Login {
+  align-items: center;
+  background-image: var(--gradient-one);
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  width: 100vh;
+}
