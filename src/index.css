@@ -13,16 +13,13 @@
   --divider-color: #13131348;
   --secondary-color-purple: #3D24AA;
   --secondary-color-pink: #EF1290;
-  --secondary-color-cyan: rgb(6, 144, 144);
+  --secondary-color-cyan: #00bfc3;
   --accent-color: #EFC82C;
   --gradient-one: linear-gradient(to right top, #3d24aa, #6f1ca9, #9411a6, #b303a1, #cf009b, #d93aa9);
 
   /* border-radius */
   --input-buttons-radius: 0.6rem;
   --container-radius: 1rem;
-
-  /* box-shadow */
-  --primary-shadow: 0 10px 50px #13131386;
 }
 
 #root {

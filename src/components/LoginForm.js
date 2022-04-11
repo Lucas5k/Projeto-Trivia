@@ -11,6 +11,7 @@ import {
 } from '../redux/actions';
 import './LoginForm.css';
 import SettingsButton from './SettingsButton';
+import trivia from '../assets/imgs/trivia.png';
 
 class LoginForm extends Component {
   constructor() {
@@ -50,6 +51,7 @@ class LoginForm extends Component {
     return (
       <form className="LoginForm">
         { redirect && <Redirect to="/game" /> }
+        <img className="LoginForm-logo" src={ trivia } alt="Trivia" />
         <h1>Sign in to play</h1>
         <label htmlFor="input-player-name">
           <input
