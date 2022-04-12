@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { actionFinalRound, actionNextRound } from '../redux/actions';
 import QuestionTimer from './QuestionTimer';
+import './NextButton.css';
 
 class NextButton extends Component {
   handleClick = () => {
@@ -13,19 +14,24 @@ class NextButton extends Component {
       recordPlayerData(playerRecord);
       history.push('/game/results');
     }
-  }
+  };
 
   render() {
     const { questionChosen } = this.props;
 
     return (
       <>
-        { questionChosen && (
-          <button data-testid="btn-next" type="button" onClick={ this.handleClick }>
+        {questionChosen && (
+          <button
+            className="NextButton"
+            data-testid="btn-next"
+            type="button"
+            onClick={ this.handleClick }
+          >
             Next
           </button>
-        ) }
-        { !questionChosen && <QuestionTimer /> }
+        )}
+        {!questionChosen && <QuestionTimer />}
       </>
     );
   }

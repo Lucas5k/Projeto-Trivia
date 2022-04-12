@@ -8,12 +8,11 @@ import PlayAgainButton from '../components/PlayAgainButton';
 
 class Results extends Component {
   render() {
-    const {
-      history,
-    } = this.props;
+    const { history } = this.props;
+
     return (
       <main>
-        <Header />
+        <Header history={ history } isGameScreen={ false } />
         <ResultsMessage />
         <PlayerFinalScore />
         <DisplayRankingButton history={ history } />

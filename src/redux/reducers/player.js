@@ -1,7 +1,7 @@
 import { QUESTION_CHOSEN, RESET_GAME, UPDATE_PLAYER_DATA } from '../actions';
 
 const INITIAL_STATE = {
-  name: '',
+  name: 'Raphael',
   assertions: 0,
   score: 0,
   gravatarEmail: '',

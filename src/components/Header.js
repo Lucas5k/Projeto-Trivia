@@ -2,17 +2,23 @@ import PropTypes from 'prop-types';
 import md5 from 'crypto-js/md5';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import PlayerScore from './PlayerScore';
+import NextButton from './NextButton';
+import './Header.css';
 
 class Header extends Component {
   render() {
-    const { name, score, gravatarEmail } = this.props;
+    const { name, score, gravatarEmail, isGameScreen, history } = this.props;
     return (
-      <header>
-        <img src={ `https://www.gravatar.com/avatar/${md5(gravatarEmail).toString()}` } data-testid="header-profile-picture" alt="avatar" />
-        <h2 data-testid="header-player-name">{ name }</h2>
-        <span data-testid="header-score">{ score }</span>
-        <PlayerScore />
+      <header className="Header">
+        <div className="Header-user-profile">
+          <img src={ `https://www.gravatar.com/avatar/${md5(gravatarEmail).toString()}` } data-testid="header-profile-picture" alt="avatar" />
+          <span data-testid="header-player-name">{ name }</span>
+        </div>
+        <div>
+          <strong>Score:</strong>
+          <span className="Score" data-testid="header-score">{ score }</span>
+        </div>
+        { isGameScreen && <NextButton history={ history } /> }
       </header>
     );
   }
@@ -22,6 +28,8 @@ Header.propTypes = {
   name: PropTypes.string,
   score: PropTypes.string,
   avatar: PropTypes.string,
+  history: PropTypes.objectOf(PropTypes.any),
+  isGameScreen: PropTypes.bool.isRequired,
 }.isRequired;
 
 const mapStateToProps = (state) => ({

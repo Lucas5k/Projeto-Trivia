@@ -2,15 +2,16 @@ import { decode } from 'he';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import loadingBubble from '../assets/imgs/loading-bubble.gif';
 import { actionQuestionChosen } from '../redux/actions';
 import './Question.css';
 
 class Question extends Component {
   handleHighlightQuestions = (correctAnswer, currAnswer) => {
     const { questionChosen } = this.props;
-    if (!questionChosen) return '';
-    if (correctAnswer === currAnswer) return 'Question-right';
-    if (correctAnswer !== currAnswer) return 'Question-wrong';
+    if (!questionChosen) return 'Question-option';
+    if (correctAnswer === currAnswer) return 'Question-option Question-right';
+    if (correctAnswer !== currAnswer) return 'Question-option Question-wrong';
   };
 
   handlePickQuestion = (option, rightAnswer, difficulty, timer) => {
@@ -18,7 +19,7 @@ class Question extends Component {
     const multipliers = { hard: 3, medium: 2, easy: 1 };
     const isRight = option === rightAnswer;
     const minPoints = 10;
-    const score = isRight ? minPoints + (multipliers[difficulty] * timer) : 0;
+    const score = isRight ? minPoints + multipliers[difficulty] * timer : 0;
     pickQuestion(score);
   };
 
@@ -26,10 +27,16 @@ class Question extends Component {
     const { timer, currQuestion, answers, questionChosen } = this.props;
 
     return (
-      <>
-        {!currQuestion && <p>Loading...</p>}
+      <section className="Question">
+        {!currQuestion && (
+          <img
+            className="Question-loading-bubble"
+            src={ loadingBubble }
+            alt="Loading..."
+          />
+        )}
         {currQuestion && (
-          <section className="Question">
+          <>
             <h1 data-testid="question-category">{currQuestion.category}</h1>
             <p data-testid="question-text">{decode(currQuestion.question)}</p>
             <ul data-testid="answer-options">
@@ -58,9 +65,9 @@ class Question extends Component {
                 </button>
               ))}
             </ul>
-          </section>
+          </>
         )}
-      </>
+      </section>
     );
   }
 }

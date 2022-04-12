@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { actionDecreaseTimer, actionQuestionChosen } from '../redux/actions';
+import './QuestionTimer.css';
 
 class QuestionTimer extends Component {
   componentDidMount() {
@@ -33,7 +34,7 @@ class QuestionTimer extends Component {
     const { timer } = this.props;
 
     return (
-      <span>{timer}</span>
+      <span className="QuestionTimer">{timer}</span>
     );
   }
 }

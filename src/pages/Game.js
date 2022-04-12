@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Header from '../components/Header';
-import NextButton from '../components/NextButton';
 import Question from '../components/Question';
+import './Game.css';
 
 class Game extends Component {
   shuffleAnswers = (currQuestion) => {
@@ -20,13 +20,12 @@ class Game extends Component {
     const { questions, currRound, history } = this.props;
 
     return (
-      <main>
-        <Header />
+      <main className="Game">
+        <Header history={ history } isGameScreen />
         <Question
           currQuestion={ questions[currRound] }
           answers={ this.shuffleAnswers(questions[currRound]) }
         />
-        <NextButton history={ history } />
       </main>
     );
   }

@@ -6,7 +6,14 @@
   flex-flow: column nowrap;
   margin-left: 4rem;
   padding: 2.5rem;
+  transition: 400ms;
   width: 700px;
+}
+
+.Question-loading-bubble {
+  height: 200px;
+  margin: 0 auto;
+  width: 200px;
 }
 
 .Question h1 {
@@ -23,7 +30,7 @@
   flex-flow: column nowrap;
 }
 
-.Question button {
+.Question-option {
   align-items: center;
   background-color: var(--accent-color);
   border: 1px solid var(--text-icons);
@@ -46,9 +53,9 @@
 }
 
 .Question-wrong {
-  border: 3px solid red;
+  background-color: var(--secondary-color-pink);
 }
 
 .Question-right {
-  border: 3px solid rgb(6, 240, 15);
+  background-color: var(--secondary-color-cyan);
 }
