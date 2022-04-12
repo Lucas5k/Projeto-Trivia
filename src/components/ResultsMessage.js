@@ -19,7 +19,7 @@ class ResultsMessage extends Component {
             <img src={ lose } alt="" />
           )}
         </div>
-        <p>{assertions >= minRightAnswers ? 'Well Done!' : 'Could\'ve been better...'}</p>
+        <p>{assertions >= minRightAnswers ? 'Well Done!' : 'Coulde been better...'}</p>
       </section>
     );
   }
