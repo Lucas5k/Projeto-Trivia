@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import rankingPic from '../assets/imgs/ranking.png';
 import IndividualRanking from '../components/IndividualRanking';
 import { actionGetRanking, actionResetGame } from '../redux/actions';
-import rankingPic from '../assets/imgs/ranking.png';
+import wave from '../assets/imgs/wave.svg';
 import './Ranking.css';
 
 class Ranking extends Component {
@@ -44,6 +45,8 @@ class Ranking extends Component {
             Home
           </button>
         </section>
+        <img className="Login-wave" src={ wave } alt="" />
+        <img className="Login-wave-upsidedown" src={ wave } alt="" />
       </div>
     );
   }

@@ -8,6 +8,7 @@
   padding: 2.5rem;
   transition: 400ms;
   width: 600px;
+  z-index: 1;
 }
 
 .Question-loading-bubble {

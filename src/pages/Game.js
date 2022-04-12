@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import Header from '../components/Header';
 import Question from '../components/Question';
+import forms from '../assets/imgs/animated-forms.svg';
 import './Game.css';
 
 class Game extends Component {
@@ -22,6 +23,7 @@ class Game extends Component {
 
     return (
       <main className="Game">
+        <img className="Game-background-forms" src={ forms } alt="" />
         { playerName === '' && <Redirect to="/" /> }
         <Header history={ history } isGameScreen />
         <Question

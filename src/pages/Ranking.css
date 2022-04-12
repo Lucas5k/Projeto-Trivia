@@ -1,18 +1,20 @@
 .Ranking-container {
   align-items: center;
-  background-image: var(--gradient-one);
+  background-image: var(--gradient-three);
   background-size: cover;
   display: flex;
   flex-flow: column nowrap;
-  height: 100vh;
   justify-content: center;
-  width: 100vw;
+  min-height: 100vh;
+  min-width: 100vw;
+  padding: 2.5rem;
 }
 
 .Ranking-picture {
   margin-bottom: 1rem;
   object-fit: contain;
   width: 300px;
+  z-index: 1;
 }
 
 .Ranking {
@@ -23,6 +25,7 @@
   display: flex;
   flex-flow: column nowrap;
   padding: 2.5rem;
+  z-index: 1;
 }
 
 .Ranking h1 {

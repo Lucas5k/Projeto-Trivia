@@ -4,7 +4,6 @@
   border: 1px solid var(--text-icons);
   border-radius: var(--input-buttons-radius);
   color: var(--text-icons);
-  cursor: pointer;
   display: flex;
   font-size: 1rem;
   justify-content: center;

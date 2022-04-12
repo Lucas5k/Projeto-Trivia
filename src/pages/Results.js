@@ -7,6 +7,7 @@ import Header from '../components/Header';
 import PlayAgainButton from '../components/PlayAgainButton';
 import PlayerFinalScore from '../components/PlayerFinalScore';
 import ResultsMessage from '../components/ResultsMessage';
+import wave from '../assets/imgs/wave.svg';
 import './Results.css';
 
 class Results extends Component {
@@ -23,6 +24,8 @@ class Results extends Component {
           <DisplayRankingButton history={ history } />
           <PlayAgainButton history={ history } />
         </section>
+        <img className="Login-wave" src={ wave } alt="" />
+        <img className="Login-wave-upsidedown" src={ wave } alt="" />
       </main>
     );
   }
