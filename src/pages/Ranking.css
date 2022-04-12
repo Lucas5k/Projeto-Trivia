@@ -17,6 +17,10 @@
   z-index: 1;
 }
 
+.Ranking-noranking {
+  margin-bottom: 1rem;
+}
+
 .Ranking {
   align-items: center;
   background-color: var(--primary-color);
@@ -30,7 +34,11 @@
 
 .Ranking h1 {
   font-size: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+}
+
+.Ranking ol {
+  margin-top: 1rem;
 }
 
 .Ranking button {

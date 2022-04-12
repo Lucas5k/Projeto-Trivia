@@ -2,9 +2,9 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import rankingPic from '../assets/imgs/ranking.png';
+import wave from '../assets/imgs/wave.svg';
 import IndividualRanking from '../components/IndividualRanking';
 import { actionGetRanking, actionResetGame } from '../redux/actions';
-import wave from '../assets/imgs/wave.svg';
 import './Ranking.css';
 
 class Ranking extends Component {
@@ -26,17 +26,18 @@ class Ranking extends Component {
         <img className="Ranking-picture" src={ rankingPic } alt="Ranking" />
         <section className="Ranking">
           <h1 data-testid="ranking-title">Ranking</h1>
-          <ol>
-            {ranking
-              .sort((prev, curr) => curr.score - prev.score)
-              .map((record, index) => (
-                <IndividualRanking
-                  key={ index }
-                  index={ index }
-                  { ...record }
-                />
-              ))}
-          </ol>
+          {ranking.length === 0 && (
+            <p className="Ranking-noranking">There are no records yet</p>
+          )}
+          {ranking.length !== 0 && (
+            <ol>
+              {ranking
+                .sort((prev, curr) => curr.score - prev.score)
+                .map((record, index) => (
+                  <IndividualRanking key={ index } index={ index } { ...record } />
+                ))}
+            </ol>
+          )}
           <button
             type="button"
             data-testid="btn-go-home"

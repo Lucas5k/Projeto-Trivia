@@ -8,6 +8,12 @@ const returnRanking = (resultsObject) => {
   if (prevRanking) return [...prevRanking, resultsObject];
 };
 
+const getLocalStorageRanking = () => {
+  const savedRanking = JSON.parse(localStorage.getItem('ranking'));
+  if (!savedRanking) return [];
+  if (savedRanking) return savedRanking;
+};
+
 const ranking = (state = INITIAL_STATE, action) => {
   switch (action.type) {
   case FINAL_ROUND: {
@@ -22,7 +28,7 @@ const ranking = (state = INITIAL_STATE, action) => {
     return updatedRanking;
   }
   case GET_RANKING:
-    return [...JSON.parse(localStorage.getItem('ranking'))];
+    return getLocalStorageRanking();
   default:
     return state;
   }
