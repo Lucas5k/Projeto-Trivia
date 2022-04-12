@@ -34,4 +34,5 @@
   top: 0;
   transform: rotate(180deg);
   width: 100%;
+  z-index: 0;
 }
