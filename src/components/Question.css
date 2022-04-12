@@ -4,7 +4,6 @@
   border-radius: var(--container-radius);
   display: flex;
   flex-flow: column nowrap;
-  margin-left: 4rem;
   padding: 2.5rem;
   transition: 400ms;
   width: 600px;
