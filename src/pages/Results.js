@@ -15,7 +15,7 @@ class Results extends Component {
 
     return (
       <main className="Results">
-        { playerName !== '' && <Redirect to="" /> }
+        { playerName !== '' && <Redirect to="/" /> }
         <Header history={ history } isGameScreen={ false } />
         <ResultsMessage />
         <section className="Results-info">
