@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import Header from '../components/Header';
 import Question from '../components/Question';
 import './Game.css';
@@ -17,10 +18,11 @@ class Game extends Component {
   };
 
   render() {
-    const { questions, currRound, history } = this.props;
+    const { questions, playerName, currRound, history } = this.props;
 
     return (
       <main className="Game">
+        { playerName !== '' && <Redirect to="" /> }
         <Header history={ history } isGameScreen />
         <Question
           currQuestion={ questions[currRound] }
@@ -34,11 +36,13 @@ class Game extends Component {
 const mapStateToProps = (state) => ({
   questions: state.game.questions,
   currRound: state.game.round,
+  playerName: state.player.name,
 });
 
 Game.propTypes = {
   questions: PropTypes.arrayOf(PropTypes.object).isRequired,
   currRound: PropTypes.number.isRequired,
+  playerName: PropTypes.string.isRequired,
   history: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
