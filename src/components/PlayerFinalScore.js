@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import './PlayerFinalScore.css';
 
 class PlayerFinalScore extends Component {
   render() {
     const { assertions, score } = this.props;
 
     return (
-      <section>
+      <section className="PlayerFinalScore">
         <p>
-          Score:
+          <strong>Score:</strong>
           <span data-testid="feedback-total-score">{ score }</span>
         </p>
         <p>
-          Right answers:
+          <strong>Right answers:</strong>
           <span data-testid="feedback-total-question">{ assertions }</span>
         </p>
       </section>

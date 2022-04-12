@@ -1,22 +1,25 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import DisplayRankingButton from '../components/DisplayRankingButton';
-import PlayerFinalScore from '../components/PlayerFinalScore';
-import ResultsMessage from '../components/ResultsMessage';
 import Header from '../components/Header';
 import PlayAgainButton from '../components/PlayAgainButton';
+import PlayerFinalScore from '../components/PlayerFinalScore';
+import ResultsMessage from '../components/ResultsMessage';
+import './Results.css';
 
 class Results extends Component {
   render() {
     const { history } = this.props;
 
     return (
-      <main>
+      <main className="Results">
         <Header history={ history } isGameScreen={ false } />
         <ResultsMessage />
-        <PlayerFinalScore />
-        <DisplayRankingButton history={ history } />
-        <PlayAgainButton history={ history } />
+        <section className="Results-info">
+          <PlayerFinalScore />
+          <DisplayRankingButton history={ history } />
+          <PlayAgainButton history={ history } />
+        </section>
       </main>
     );
   }

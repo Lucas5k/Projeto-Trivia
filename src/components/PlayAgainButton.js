@@ -1,5 +1,6 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
+import './PlayAgainButton.css';
 
 class PlayAgainButton extends React.Component {
   handleClick = () => {
@@ -10,6 +11,7 @@ class PlayAgainButton extends React.Component {
   render() {
     return (
       <button
+        className="PlayAgainButton"
         type="button"
         data-testid="btn-play-again"
         onClick={ this.handleClick }

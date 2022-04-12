@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import './DisplayRankingButton.css';
 
 class DisplayRankingButton extends Component {
   handleClick = () => {
@@ -10,6 +11,7 @@ class DisplayRankingButton extends Component {
   render() {
     return (
       <button
+        className="DisplayRankingButton"
         type="button"
         data-testid="btn-ranking"
         onClick={ this.handleClick }

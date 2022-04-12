@@ -1,6 +1,9 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import won from '../assets/imgs/win.png';
+import lose from '../assets/imgs/lose.png';
+import './ResultsMessage.css';
 
 class ResultsMessage extends Component {
   render() {
@@ -8,9 +11,16 @@ class ResultsMessage extends Component {
     const minRightAnswers = 3;
 
     return (
-      <p data-testid="feedback-text">
-        {assertions >= minRightAnswers ? 'Well Done!' : 'Could be better...'}
-      </p>
+      <section className="ResultsMessage" data-testid="feedback-text">
+        <div className="ResultsMessage-picture-container">
+          {assertions >= minRightAnswers ? (
+            <img src={ won } alt="You won" />
+          ) : (
+            <img src={ lose } alt="" />
+          )}
+        </div>
+        <p>{assertions >= minRightAnswers ? 'Well Done!' : 'Could\'ve been better...'}</p>
+      </section>
     );
   }
 }
