@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import IndividualRanking from '../components/IndividualRanking';
 import { actionGetRanking, actionResetGame } from '../redux/actions';
+import rankingPic from '../assets/imgs/ranking.png';
+import './Ranking.css';
 
 class Ranking extends Component {
   componentDidMount() {
@@ -19,27 +21,30 @@ class Ranking extends Component {
   render() {
     const { ranking } = this.props;
     return (
-      <main>
-        <h1 data-testid="ranking-title">Ranking</h1>
-        <ol>
-          {ranking
-            .sort((prev, curr) => curr.score - prev.score)
-            .map((record, index) => (
-              <IndividualRanking
-                key={ index }
-                index={ index }
-                { ...record }
-              />
-            ))}
-        </ol>
-        <button
-          type="button"
-          data-testid="btn-go-home"
-          onClick={ this.handleClick }
-        >
-          Go Home
-        </button>
-      </main>
+      <div className="Ranking-container">
+        <img className="Ranking-picture" src={ rankingPic } alt="Ranking" />
+        <section className="Ranking">
+          <h1 data-testid="ranking-title">Ranking</h1>
+          <ol>
+            {ranking
+              .sort((prev, curr) => curr.score - prev.score)
+              .map((record, index) => (
+                <IndividualRanking
+                  key={ index }
+                  index={ index }
+                  { ...record }
+                />
+              ))}
+          </ol>
+          <button
+            type="button"
+            data-testid="btn-go-home"
+            onClick={ this.handleClick }
+          >
+            Go Home
+          </button>
+        </section>
+      </div>
     );
   }
 }
