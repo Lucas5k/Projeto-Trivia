@@ -22,7 +22,7 @@ class Game extends Component {
 
     return (
       <main className="Game">
-        { playerName !== '' && <Redirect to="/" /> }
+        { playerName === '' && <Redirect to="/" /> }
         <Header history={ history } isGameScreen />
         <Question
           currQuestion={ questions[currRound] }
