@@ -6,7 +6,7 @@
 <p>git clone git@github.com:Lucas5k/Projeto-Trivia.git</p>
 
 - Entre no arquivo do projeto
-<p>cd Projeto-frontend-online-store</p>
+<p>cd Projeto-Trivia</p>
 
 - Instale as dependências
 <p>npm install</p>
