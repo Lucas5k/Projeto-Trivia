@@ -19,7 +19,7 @@ Página Rodando na web
 para ver a versão final do nosso projeto no seu navegador.
 
 <h2>Sobre o Projeto</h2>
-<p>Neste projeto criamos uma versão simplificada, sem persistência no banco de dados, de uma loja online, desenvolvendo em grupo suas funcionalidades de acordo com demandas definidas, em um cenário mais próximo ao do mercado de trabalho.</p>
+<p>Neste projeto desenvolvemos um jogo de perguntas e respostas baseado no jogo Trivia (tipo um show do milhão americano rs) utilizando React e Redux, desenvolvendo em grupo suas funcionalidades de acordo com as demandas definidas em um quadro Kanban.</p>
 
 Projeto feito em grupo.
 
