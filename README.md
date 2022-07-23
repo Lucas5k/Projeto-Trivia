@@ -24,5 +24,4 @@ Projeto feito em grupo.
 - Thais Regina Kotovicz. 
 - Elisa Taborda. 
 - Vitória Da Costa Holanda.
-- 
 - Css feito por Raphael Almeida Martins de Oliveira e Vitória Da Costa Holanda.
