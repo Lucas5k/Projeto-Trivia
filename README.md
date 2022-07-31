@@ -16,7 +16,6 @@
 
 Página Rodando na web
 <a href="https://projeto-trivia-sage.vercel.app/">Clique aqui</a><p>para ver a versão final do nosso projeto no seu navegador.</p>
-para ver a versão final do nosso projeto no seu navegador.
 
 <h2>Sobre o Projeto</h2>
 <p>Neste projeto desenvolvemos um jogo de perguntas e respostas baseado no jogo Trivia (tipo um show do milhão americano rs) utilizando React e Redux, desenvolvendo em grupo suas funcionalidades de acordo com as demandas definidas em um quadro Kanban.</p>
