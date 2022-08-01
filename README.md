@@ -1,30 +1,50 @@
 # Projeto-Trivia
 
-<h1>Como acessar na sua máquina</h1>
+## :memo: Descrição
+Esse foi o meu Sétimo projeto no modúlo de front-end, Neste projeto desenvolvemos um jogo de perguntas e respostas baseado no jogo Trivia (tipo um show do milhão americano rs) utilizando React e Redux, desenvolvendo em grupo suas funcionalidades de acordo com as demandas definidas em um quadro Kanban.
 
+## :books: Funcionalidades
+* <b>Funcionalidade 1</b>: Logar no jogo e, se o email tiver cadastro no site Gravatar, ter sua foto associada ao perfil da pessoa usuária.
+* <b>Funcionalidade 2</b>: Acessar a página referente ao jogo, onde se deverá escolher uma das respostas disponíveis para cada uma das perguntas apresentadas. A resposta deve ser marcada antes do contador de tempo chegar a zero, caso contrário a resposta deverá ser considerada errada.
+* <b>Funcionalidade 3</b>: Ser redirecionada, após 5 perguntas respondidas, para a tela de score, onde o texto mostrado depende do número de acertos.
+* <b>Funcionalidade 4</b>: Visualizar a página de ranking, se quiser, ao final de cada jogo.
+* <b>Funcionalidade 5</b>: Configurar algumas opções para o jogo em uma tela de configuração acessível a partir do cabeçalho do app.
+
+## :wrench: Tecnologias utilizadas
+- React (componente de classe)
+- Css
+- Local storage
+
+## :rocket: Rodando o projeto
+Para rodar o repositório é necessário clonar o mesmo, dar o seguinte comando para iniciar o projeto:
+```
 - Clone o repositório
-<p>git clone git@github.com:Lucas5k/Projeto-Trivia.git</p>
+git clone git@github.com:Lucas5k/Projeto-Trivia.git
 
 - Entre no arquivo do projeto
-<p>cd Projeto-Trivia</p>
+cd Projeto-Trivia
 
 - Instale as dependências
-<p>npm install</p>
+npm install
 
 - Inicialize o projeto
-<p>npm start</p>
+npm start
 
-Página Rodando na web
+```
+## Rodando na Web:
+
 <a href="https://projeto-trivia-sage.vercel.app/">Clique aqui</a><p>para ver a versão final do nosso projeto no seu navegador.</p>
 
-<h2>Sobre o Projeto</h2>
-<p>Neste projeto desenvolvemos um jogo de perguntas e respostas baseado no jogo Trivia (tipo um show do milhão americano rs) utilizando React e Redux, desenvolvendo em grupo suas funcionalidades de acordo com as demandas definidas em um quadro Kanban.</p>
+<!-- ## :soon: Implementação futura
+* O que será implementado na próxima sprint? -->
 
-Projeto feito em grupo.
+## :handshake: Projeto em Grupo!
+    - Eu, Lucas Cabral. 
+    - Raphael Almeida Martins de Oliveira. 
+    - Thais Regina Kotovicz. 
+    - Elisa Taborda. 
+    - Vitória Da Costa Holanda.
+    
+    - Css feito por Raphael Almeida Martins de Oliveira e Vitória Da Costa Holanda.
 
-- Eu, Lucas Cabral. 
-- Raphael Almeida Martins de Oliveira. 
-- Thais Regina Kotovicz. 
-- Elisa Taborda. 
-- Vitória Da Costa Holanda.
-- Css feito por Raphael Almeida Martins de Oliveira e Vitória Da Costa Holanda.
+<!-- ## :dart: Status do projeto -->
