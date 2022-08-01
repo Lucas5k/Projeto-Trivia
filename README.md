@@ -1,7 +1,7 @@
 # Projeto-Trivia
 
 ## :memo: Descrição
-Esse foi o meu Sétimo projeto no modúlo de front-end, Neste projeto desenvolvemos um jogo de perguntas e respostas baseado no jogo Trivia (tipo um show do milhão americano rs) utilizando React e Redux, desenvolvendo em grupo suas funcionalidades de acordo com as demandas definidas em um quadro Kanban.
+Esse foi o meu Sétimo projeto no modúlo de front-end, Neste projeto desenvolvemos um jogo de perguntas e respostas baseado no jogo Trivia (tipo um show do milhão americano) utilizando React e Redux, desenvolvendo em grupo suas funcionalidades de acordo com as demandas definidas em um quadro Kanban.
 
 ## :books: Funcionalidades
 * <b>Funcionalidade 1</b>: Logar no jogo e, se o email tiver cadastro no site Gravatar, ter sua foto associada ao perfil da pessoa usuária.
