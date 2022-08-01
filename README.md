@@ -14,6 +14,7 @@ Esse foi o meu Sétimo projeto no modúlo de front-end, Neste projeto desenvolve
 - React (componente de classe)
 - Css
 - Local storage
+- Redux para o gerenciamento de estado!
 
 ## :rocket: Rodando o projeto
 Para rodar o repositório é necessário clonar o mesmo, dar o seguinte comando para iniciar o projeto:
