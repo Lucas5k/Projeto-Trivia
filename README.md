@@ -10,7 +10,7 @@ Esse foi o meu Sétimo projeto no módulo de front-end, Neste projeto desenvolve
 * <b>Funcionalidade 4</b>: Visualizar a página de ranking, se quiser, ao final de cada jogo.
 * <b>Funcionalidade 5</b>: Configurar algumas opções para o jogo em uma tela de configuração acessível a partir do cabeçalho do app.
 
-## :wrench: Tecnologias utilizadas
+## :wrench: <h3>Tecnologias utilizadas</h3>
 - React (componente de classe)
 - Css
 - Local storage
