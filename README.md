@@ -4,13 +4,13 @@
 Esse foi o meu Sétimo projeto no módulo de front-end, Neste projeto desenvolvemos um jogo de perguntas e respostas baseado no jogo Trivia (tipo um show do milhão americano) utilizando React e Redux, desenvolvendo em grupo suas funcionalidades de acordo com as demandas definidas em um quadro Kanban.
 
 ## :books: Funcionalidades
-* <b>Funcionalidade 1</b>: Logar no jogo e, se o email tiver cadastro no site Gravatar, ter sua foto associada ao perfil da pessoa usuária.
-* <b>Funcionalidade 2</b>: Acessar a página referente ao jogo, onde se deverá escolher uma das respostas disponíveis para cada uma das perguntas apresentadas. A resposta deve ser marcada antes do contador de tempo chegar a zero, caso contrário a resposta deverá ser considerada errada.
-* <b>Funcionalidade 3</b>: Ser redirecionada, após 5 perguntas respondidas, para a tela de score, onde o texto mostrado depende do número de acertos.
-* <b>Funcionalidade 4</b>: Visualizar a página de ranking, se quiser, ao final de cada jogo.
-* <b>Funcionalidade 5</b>: Configurar algumas opções para o jogo em uma tela de configuração acessível a partir do cabeçalho do app.
+<ol><b>Funcionalidade 1</b>: Logar no jogo e, se o email tiver cadastro no site Gravatar, ter sua foto associada ao perfil da pessoa usuária.</ol>
+<ol><b>Funcionalidade 2</b>: Acessar a página referente ao jogo, onde se deverá escolher uma das respostas disponíveis para cada uma das perguntas apresentadas. A resposta deve ser marcada antes do contador de tempo chegar a zero, caso contrário a resposta deverá ser considerada errada.</ol>
+<ol><b>Funcionalidade 3</b>: Ser redirecionada, após 5 perguntas respondidas, para a tela de score, onde o texto mostrado depende do número de acertos.</ol>
+<ol><b>Funcionalidade 4</b>: Visualizar a página de ranking, se quiser, ao final de cada jogo.</ol>
+<ol><b>Funcionalidade 5</b>: Configurar algumas opções para o jogo em uma tela de configuração acessível a partir do cabeçalho do app.</ol>
 
-## :wrench: <h3>Tecnologias utilizadas</h3>
+## <h3>:wrench: Tecnologias utilizadas</h3>
 - React (componente de classe)
 - Css
 - Local storage
